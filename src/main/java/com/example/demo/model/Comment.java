@@ -32,11 +32,30 @@ private String texte;
 //création de jointure
 @ManyToOne(fetch =FetchType.LAZY,optional = false)
 @JoinColumn(name = "post_id",nullable = false)
-
+//action on delete (de la clé primaire)
 @OnDelete(action=OnDeleteAction.CASCADE)
+//proprieté d'affichage dans votre controller
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @JsonIdentityReference(alwaysAsId = true)
 @JsonProperty("post_id")
 private Post post;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public String getTexte() {
+	return texte;
+}
+public void setTexte(String texte) {
+	this.texte = texte;
+}
+public Post getPost() {
+	return post;
+}
+public void setPost(Post post) {
+	this.post = post;
+}
 
 }
